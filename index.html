@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Entrepreneurship Notes — S2BC230411T</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080C14;--surface:#0D1320;--surface2:#121A2A;--surface3:#172033;
+  --border:#1E2D4A;--border2:#2A3F6A;
+  --gold:#D4A017;--gold2:#F0C040;--gold-dim:#8A6510;
+  --teal:#00C4B0;--teal2:#00E5CF;--teal-dim:#006E62;
+  --rose:#FF5F7E;--rose-dim:#8A1A30;
+  --blue:#4A90E2;--blue2:#6AACFF;
+  --amber:#F5A623;--green:#22C55E;--purple:#A78BFA;
+  --text:#C8D8F8;--text2:#8FA0C0;--text3:#4A5A78;
+  --star:#F5A623;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;font-size:14px;line-height:1.7}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--surface)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+/* NAV */
+#topnav{background:#060A10;border-bottom:1px solid var(--border);padding:0 24px;position:sticky;top:0;z-index:200;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;backdrop-filter:blur(10px)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);white-space:nowrap;margin-right:16px;flex-shrink:0;letter-spacing:.5px}
+.nav-logo span{color:var(--teal);font-size:11px;font-family:'DM Sans',sans-serif;font-weight:500;display:block;margin-top:-3px;letter-spacing:1px;text-transform:uppercase}
+.nav-btn{background:transparent;border:none;color:var(--text3);cursor:pointer;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;white-space:nowrap;font-family:inherit;transition:all .15s;letter-spacing:.2px}
+.nav-btn:hover{background:var(--surface2);color:var(--text)}
+.nav-btn.active{color:var(--gold);background:rgba(212,160,23,0.08);border-bottom:2px solid var(--gold)}
+.nav-sep{width:1px;height:24px;background:var(--border);flex-shrink:0;margin:0 4px}
+
+/* LAYOUT */
+#content{max-width:960px;margin:0 auto;padding:32px 24px}
+.view{display:none}
+.view.active{display:block}
+
+/* HERO */
+.hero{text-align:center;padding:48px 0 36px;border-bottom:1px solid var(--border);margin-bottom:40px}
+.hero-tag{font-size:11px;font-weight:600;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.hero-title{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:#E8F0FF;line-height:1.2;margin-bottom:8px}
+.hero-sub{font-size:14px;color:var(--text2);margin-bottom:24px;letter-spacing:.3px}
+.hero-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.pill{padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.pill-gold{background:rgba(212,160,23,.12);color:var(--gold);border:1px solid rgba(212,160,23,.25)}
+.pill-teal{background:rgba(0,196,176,.10);color:var(--teal);border:1px solid rgba(0,196,176,.2)}
+.pill-rose{background:rgba(255,95,126,.10);color:var(--rose);border:1px solid rgba(255,95,126,.2)}
+
+/* UNIT CARDS on home */
+.units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.unit-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.unit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0}
+.unit-card.u1::before{background:linear-gradient(90deg,var(--teal),var(--blue))}
+.unit-card.u2::before{background:linear-gradient(90deg,var(--gold),var(--amber))}
+.unit-card.u3::before{background:linear-gradient(90deg,var(--green),var(--teal))}
+.unit-card.u4::before{background:linear-gradient(90deg,var(--purple),var(--blue))}
+.unit-card.u5::before{background:linear-gradient(90deg,var(--rose),var(--purple))}
+.unit-card:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.unit-num{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.unit-card.u1 .unit-num{color:var(--teal)}
+.unit-card.u2 .unit-num{color:var(--gold)}
+.unit-card.u3 .unit-num{color:var(--green)}
+.unit-card.u4 .unit-num{color:var(--purple)}
+.unit-card.u5 .unit-num{color:var(--rose)}
+.unit-name{font-family:'Playfair Display',serif;font-size:17px;color:#E8F0FF;margin-bottom:10px;line-height:1.3}
+.unit-topics{font-size:12px;color:var(--text2);line-height:1.8}
+.unit-lectures{position:absolute;top:16px;right:16px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3)}
+
+/* CONTENT SECTIONS */
+.section-header{margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.section-unit-tag{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-family:'Playfair Display',serif;font-size:30px;color:#E8F0FF;margin-bottom:6px}
+.section-desc{font-size:13px;color:var(--text2)}
+
+/* TOPIC HEADERS */
+.topic-h{display:none}
+.topic-h2{font-size:15px;font-weight:600;color:var(--text);margin:20px 0 10px;display:flex;align-items:center;gap:8px}
+.topic-h2::before{content:'';width:3px;height:16px;border-radius:2px;flex-shrink:0}
+.u1-color .topic-h2::before,.u1 .topic-h2::before{background:var(--teal)}
+.u2-color .topic-h2::before,.u2-page .topic-h2::before{background:var(--gold)}
+.u3-color .topic-h2::before,.u3-page .topic-h2::before{background:var(--green)}
+.u4-color .topic-h2::before,.u4-page .topic-h2::before{background:var(--purple)}
+.u5-color .topic-h2::before,.u5-page .topic-h2::before{background:var(--rose)}
+
+/* TEXT BLOCKS */
+.prose{font-size:13.5px;color:var(--text);line-height:1.85;margin-bottom:14px}
+.prose strong{color:#E0F0FF;font-weight:600}
+
+/* BULLET POINTS */
+.blist{list-style:none;margin:10px 0 14px;padding:0}
+.blist li{padding:5px 0 5px 18px;position:relative;font-size:13.5px;color:var(--text);line-height:1.75;border-bottom:1px solid rgba(30,45,74,.4)}
+.blist li:last-child{border-bottom:none}
+.blist li::before{content:'›';position:absolute;left:0;color:var(--teal);font-size:16px;line-height:1.5;font-weight:700}
+
+/* COMPARISON TABLES */
+.cmp-table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:12.5px;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.cmp-table th{background:var(--surface3);color:var(--text2);font-weight:600;padding:10px 14px;text-align:left;letter-spacing:.3px;border-bottom:2px solid var(--border2)}
+.cmp-table td{padding:9px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.65}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+.cmp-table td:first-child{color:var(--text2);font-weight:500;white-space:nowrap;width:160px}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px}
+.card-accent{border-left:3px solid var(--teal)}
+.card.gold-accent{border-left-color:var(--gold)}
+.card.green-accent{border-left-color:var(--green)}
+.card.purple-accent{border-left-color:var(--purple)}
+.card.rose-accent{border-left-color:var(--rose)}
+.card-title{font-size:13px;font-weight:600;color:#D8E8FF;margin-bottom:8px}
+.card-body{font-size:13px;color:var(--text2);line-height:1.75}
+
+/* EXAMPLE BLOCKS */
+.example-box{background:rgba(0,196,176,.05);border:1px solid rgba(0,196,176,.15);border-radius:8px;padding:12px 16px;margin:10px 0 14px;font-size:12.5px;color:var(--text2);line-height:1.7}
+.example-box::before{content:'📌 Example: ';color:var(--teal);font-weight:600;font-size:11.5px;letter-spacing:.5px;text-transform:uppercase}
+
+/* IMPORTANT QUESTIONS SECTION */
+.pyq-section{background:linear-gradient(135deg,rgba(245,166,35,.04),rgba(212,160,23,.08));border:1px solid rgba(212,160,23,.2);border-radius:14px;padding:22px;margin-top:36px}
+.pyq-header{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid rgba(212,160,23,.15)}
+.pyq-star{font-size:20px}
+.pyq-title{font-family:'Playfair Display',serif;font-size:18px;color:var(--gold)}
+.pyq-subtitle{font-size:11px;color:var(--gold-dim);letter-spacing:.5px;text-transform:uppercase;margin-top:2px}
+.pyq-note{font-size:12px;color:var(--amber);font-style:italic;margin-bottom:14px;padding:8px 12px;background:rgba(245,166,35,.06);border-radius:6px;line-height:1.6}
+.pyq-list{list-style:none;padding:0;margin:0}
+.pyq-list li{padding:9px 12px 9px 0;border-bottom:1px solid rgba(212,160,23,.1);font-size:13px;color:var(--text);line-height:1.65;display:flex;align-items:flex-start;gap:10px;cursor:default;transition:background .12s;border-radius:6px;margin-bottom:2px;padding-left:8px}
+.pyq-list li:last-child{border-bottom:none}
+.pyq-list li:hover{background:rgba(212,160,23,.04)}
+.pyq-star-icon{color:var(--star);font-size:13px;flex-shrink:0;margin-top:2px}
+.pyq-marks{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-left:auto;flex-shrink:0;padding:2px 6px;background:var(--surface3);border-radius:4px;align-self:flex-start;margin-top:2px}
+.high-freq{color:var(--amber) !important;font-weight:500}
+
+/* DANHOF / CLASSIFICATION CARDS */
+.classif-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0 20px}
+.classif-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px}
+.classif-card-name{font-weight:600;font-size:13px;margin-bottom:6px}
+.classif-card-body{font-size:12px;color:var(--text2);line-height:1.65}
+
+/* STAGE FLOW */
+.stage-flow{display:flex;gap:0;margin:14px 0 20px;overflow-x:auto;padding-bottom:4px}
+.stage{background:var(--surface2);border:1px solid var(--border);border-radius:0;padding:14px 16px;min-width:140px;position:relative;flex:1}
+.stage:first-child{border-radius:8px 0 0 8px}
+.stage:last-child{border-radius:0 8px 8px 0}
+.stage-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--teal);margin-bottom:4px}
+.stage-name{font-size:12px;font-weight:600;color:#D0E4FF;margin-bottom:4px}
+.stage-desc{font-size:11px;color:var(--text2);line-height:1.5}
+.stage-arrow{width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:12px solid var(--border2);flex-shrink:0;align-self:center;margin:-1px}
+
+/* BACK BUTTON */
+.back-btn{background:transparent;border:none;color:var(--text3);cursor:pointer;display:flex;align-items:center;gap:6px;font-size:13px;font-family:inherit;margin-bottom:28px;padding:0;transition:color .15s}
+.back-btn:hover{color:var(--text)}
+
+/* UNIT COLOR THEMES */
+.u1-page .topic-h{color:var(--teal)}
+.u2-page .topic-h{color:var(--gold)}
+.u3-page .topic-h{color:var(--green)}
+.u4-page .topic-h{color:var(--purple)}
+.u5-page .topic-h{color:var(--rose)}
+
+/* ACCENT HELPERS */
+.teal{color:var(--teal)}.gold{color:var(--gold)}.rose{color:var(--rose)}.green{color:var(--green)}.purple{color:var(--purple)}.amber{color:var(--amber)}
+
+/* FOOTER */
+.footer-bar{margin-top:60px;padding-top:20px;border-top:1px solid var(--border);text-align:center;font-size:11px;color:var(--text3);letter-spacing:.5px;padding-bottom:40px}
+
+/* SEARCH */
+.search-bar{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 16px;margin-bottom:28px;transition:border .15s}
+.search-bar:focus-within{border-color:var(--border2)}
+.search-bar input{background:transparent;border:none;outline:none;color:var(--text);font-family:inherit;font-size:13px;flex:1}
+.search-bar input::placeholder{color:var(--text3)}
+
+/* DIVIDER */
+hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .hero-title{font-size:26px}
+  .units-grid{grid-template-columns:1fr}
+  .classif-grid{grid-template-columns:1fr 1fr}
+  .cmp-table td:first-child{width:100px}
+}
+
+/* ACCORDION */
+.acc-item{margin-bottom:8px;border-radius:10px;overflow:hidden;border:1px solid var(--border);transition:border-color .2s}
+.acc-item:hover{border-color:var(--border2)}
+.acc-item.open{border-color:var(--border2)}
+.acc-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;background:var(--surface2);transition:background .15s;user-select:none;gap:12px}
+.acc-hdr:hover{background:var(--surface3)}
+.acc-item.open .acc-hdr{background:var(--surface3)}
+.acc-hdr-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.acc-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;padding:2px 8px;border-radius:4px;flex-shrink:0;letter-spacing:.5px}
+.u1-page .acc-num{background:rgba(0,196,176,.12);color:var(--teal)}
+.u2-page .acc-num{background:rgba(212,160,23,.12);color:var(--gold)}
+.u3-page .acc-num{background:rgba(34,197,94,.12);color:var(--green)}
+.u4-page .acc-num{background:rgba(167,139,250,.12);color:var(--purple)}
+.u5-page .acc-num{background:rgba(255,95,126,.12);color:var(--rose)}
+.acc-title{font-family:'Playfair Display',serif;font-size:16px;color:#E0ECFF;line-height:1.3}
+.acc-item.open .acc-title{color:#fff}
+.acc-chevron{font-size:11px;color:var(--text3);flex-shrink:0;transition:transform .25s;display:inline-block}
+.acc-item.open .acc-chevron{transform:rotate(180deg);color:var(--text2)}
+.acc-body{display:none;padding:20px 20px 16px;background:var(--surface);border-top:1px solid var(--border)}
+.acc-item.open .acc-body{display:block}
+
+/* Keep pyq-section outside accordion, full width */
+.pyq-section{margin-top:24px}
+
+</style>
+</head>
+<body>
+
+<div id="topnav">
+  <div class="nav-logo">Entrepreneurship<span>S2BC230411T · BCom 2026</span></div>
+  <div class="nav-sep"></div>
+  <button class="nav-btn active" onclick="showView('home')">🏠 Home</button>
+  <button class="nav-btn" onclick="showView('u1')">Unit 1</button>
+  <button class="nav-btn" onclick="showView('u2')">Unit 2</button>
+  <button class="nav-btn" onclick="showView('u3')">Unit 3</button>
+  <button class="nav-btn" onclick="showView('u4')">Unit 4</button>
+  <button class="nav-btn" onclick="showView('u5')">Unit 5</button>
+</div>
+
+<div id="content">
+
+<!-- ═══ HOME VIEW ═══ -->
+<div class="view active" id="view-home">
+  <div class="hero">
+    <div class="hero-tag">St. Xavier's College (Autonomous) · Kolkata</div>
+    <div class="hero-title">Entrepreneurship</div>
+    <div class="hero-sub">BCom 2026 · Semester II · Course Code S2BC230411T · 3 Credits</div>
+    <div class="hero-pills">
+      <span class="pill pill-gold">★ Important Questions Included</span>
+      <span class="pill pill-teal">5 Units · 56 Lectures</span>
+      <span class="pill pill-rose">PYQ Frequency Marked</span>
+    </div>
+  </div>
+
+  <div class="units-grid">
+    <div class="unit-card u1" onclick="showView('u1')">
+      <div class="unit-lectures">16 lectures</div>
+      <div class="unit-num">Unit 1</div>
+      <div class="unit-name">Introduction to Entrepreneurship</div>
+      <div class="unit-topics">Meaning · Scope · Importance · Functions · Characteristics · Skills · Danhof's Classification · Creativity vs Innovation · Intrapreneurship · Women Entrepreneurs</div>
+    </div>
+    <div class="unit-card u2" onclick="showView('u2')">
+      <div class="unit-lectures">8 lectures</div>
+      <div class="unit-num">Unit 2</div>
+      <div class="unit-name">Family Business</div>
+      <div class="unit-topics">Concept · Advantages & Disadvantages · Founder's Role · Non-Family Members · Women in Family Business · Succession Planning · Conflict & Resolution</div>
+    </div>
+    <div class="unit-card u3" onclick="showView('u3')">
+      <div class="unit-lectures">12 lectures</div>
+      <div class="unit-num">Unit 3</div>
+      <div class="unit-name">Public & Private System of Support</div>
+      <div class="unit-topics">Start-ups · 4-Stage Growth Model · Finance Sources · Entrepreneurs' Associations · SHGs · Business Incubators · Angel Investors · VC · Private Equity</div>
+    </div>
+    <div class="unit-card u4" onclick="showView('u4')">
+      <div class="unit-lectures">12 lectures</div>
+      <div class="unit-num">Unit 4</div>
+      <div class="unit-name">Feasibility Studies & Business Plans</div>
+      <div class="unit-topics">Feasibility Study Types · Business Plan Components · Pitch Deck · Business Model Canvas</div>
+    </div>
+    <div class="unit-card u5" onclick="showView('u5')">
+      <div class="unit-lectures">8 lectures</div>
+      <div class="unit-num">Unit 5</div>
+      <div class="unit-name">Start-ups & Intellectual Property</div>
+      <div class="unit-topics">IP Concept · Patents · Copyrights · Trademarks · Geographical Indications</div>
+    </div>
+  </div>
+
+  <div class="card" style="background:rgba(212,160,23,.05);border-color:rgba(212,160,23,.2)">
+    <div class="card-title" style="color:var(--gold);font-size:14px">★ How to use these notes</div>
+    <div class="card-body">Each unit has complete notes from the handout. At the bottom of every unit, you'll find a <strong style="color:var(--gold)">★ Important Questions</strong> section with PYQ-based questions highlighted. Questions appear with their frequency rating — <span class="amber">(3/4)</span> = appeared 3 out of 4 years, highly likely. Click any unit card above to begin studying.</div>
+  </div>
+</div>
+
+<!-- ═══ UNIT 1 VIEW ═══ -->
+<div class="view u1-page" id="view-u1">
+  <button class="back-btn" onclick="showView('home')">← Back to Overview</button>
+  <div class="section-header">
+    <div class="section-unit-tag teal">Unit 1 · 16 Lectures</div>
+    <div class="section-title">Introduction to Entrepreneurship</div>
+    <div class="section-desc">Meaning, scope, characteristics, classifications, creativity, innovation, and entrepreneurship in diverse contexts.</div>
+  </div>
+
+  <!-- MEANING -->
+  <div class="acc-item" id="acc-1-1">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-1')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.1</span>
+        <span class="acc-title">Meaning of Entrepreneurship</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">Entrepreneurship is the process of identifying an opportunity, mobilising resources, assuming calculated risk, and creating value through the establishment or expansion of a business venture. It is a <strong>dynamic economic and managerial function</strong> through which an individual or group introduces innovation, organizes production, addresses market gaps, and pursues sustainable growth.</p>
+  <p class="prose">An entrepreneur is not only a business owner but also an <strong>innovator, decision-maker, risk-bearer, and change agent</strong>. Entrepreneurship involves vision, initiative, creativity, leadership, and the ability to convert uncertainty into an organised commercial or social opportunity.</p>
+
+  <!-- SCOPE -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-2">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-2')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.2</span>
+        <span class="acc-title">Scope of Entrepreneurship</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">The scope of entrepreneurship is very wide — extending across sectors, scales, technologies, ownership patterns, and developmental contexts. Major dimensions include:</p>
+  <ul class="blist">
+    <li><strong>Business Creation & New Venture Development</strong> — Ideation, feasibility analysis, resource mobilisation, scaling. <em>Example: A Kolkata boutique bakery for health-conscious consumers.</em></li>
+    <li><strong>Innovation & Product/Service Development</strong> — New products or processes to improve customer value. <em>Example: Zerodha transformed stock trading with low-cost digital brokerage.</em></li>
+    <li><strong>Employment Generation & Self-Employment</strong> — Absorbs labour; creates direct and indirect jobs.</li>
+    <li><strong>Rural & Agricultural Development</strong> — Agri-business, food processing, dairy, handicrafts, rural tourism. <em>Example: Mango pulp processing unit in Malda.</em></li>
+    <li><strong>Social & Developmental Problem-Solving</strong> — Social entrepreneurship addressing education, sanitation, healthcare, inclusion. <em>Example: SELCO India — sustainable energy for underserved communities.</em></li>
+    <li><strong>Digital, Global & Scalable Opportunities</strong> — E-commerce, SaaS, online education. Local ventures scaling globally.</li>
+  </ul>
+
+  <!-- IMPORTANCE -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-3">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-3')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.3</span>
+        <span class="acc-title">Importance of Entrepreneurship</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <ul class="blist">
+    <li><strong>Promotes Economic Growth</strong> — Contributes to national income, productivity, market expansion. Startup ecosystems in Bengaluru, Hyderabad, Pune drive India's growth.</li>
+    <li><strong>Generates Employment</strong> — Food delivery startups create jobs for delivery partners, developers, support teams.</li>
+    <li><strong>Encourages Innovation & Competitiveness</strong> — UPI-based fintech forced traditional banks to upgrade digital systems.</li>
+    <li><strong>Utilises Resources Efficiently</strong> — Converts underutilised resources (agricultural waste → eco-friendly packaging).</li>
+    <li><strong>Improves Standard of Living</strong> — Affordable edtech platforms bring quality coaching to smaller towns.</li>
+    <li><strong>Supports Balanced Regional Development</strong> — MSME clusters in Nadia, Murshidabad, Birbhum reduce migration pressure.</li>
+  </ul>
+
+  <!-- FUNCTIONS -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-4">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-4')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.4</span>
+        <span class="acc-title">Entrepreneurial Functions</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <div class="classif-grid">
+    <div class="classif-card"><div class="classif-card-name teal">Opportunity Identification</div><div class="classif-card-body">Scanning market, understanding unmet needs, spotting gaps convertible into ventures.</div></div>
+    <div class="classif-card"><div class="classif-card-name teal">Idea Generation & Innovation</div><div class="classif-card-body">Developing new products, services, or business models — entirely new or improved.</div></div>
+    <div class="classif-card"><div class="classif-card-name teal">Risk-Bearing</div><div class="classif-card-body">Assuming business risk — possibility of loss from market changes, competition, or technology shifts.</div></div>
+    <div class="classif-card"><div class="classif-card-name teal">Decision-Making</div><div class="classif-card-body">Crucial decisions on product, location, pricing, funding, staffing, marketing, and expansion.</div></div>
+    <div class="classif-card"><div class="classif-card-name teal">Organising Resources</div><div class="classif-card-body">Bringing together land, labour, capital, technology, and raw materials.</div></div>
+    <div class="classif-card"><div class="classif-card-name teal">Planning & Goal Setting</div><div class="classif-card-body">Setting objectives, business planning, forecasting demand, budgeting, and defining growth strategies.</div></div>
+  </div>
+
+  <!-- CHARACTERISTICS -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-5">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-5')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.5</span>
+        <span class="acc-title">Entrepreneurial Characteristics & Skill-Sets</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <div class="topic-h2">Characteristics</div>
+  <table class="cmp-table">
+    <thead><tr><th>Characteristic</th><th>Description & Example</th></tr></thead>
+    <tbody>
+      <tr><td>Vision & Opportunity Recognition</td><td>Ability to see an opportunity before others. <em>Example: Zepto identified ultra-fast urban fulfilment demand and built quick-commerce around it.</em></td></tr>
+      <tr><td>Risk-taking Ability</td><td>Informed decisions under uncertain conditions. <em>Example: Ather Energy continued investing in R&D despite fierce competition; IPO proceeds earmarked for factory development.</em></td></tr>
+      <tr><td>Innovativeness</td><td>Innovation in product, technology, delivery, pricing, or service experience. <em>Example: Niramai — AI-driven thermal imaging for breast cancer screening; 100,000+ women screened.</em></td></tr>
+      <tr><td>Persistence & Resilience</td><td>Continuing despite setbacks. <em>Example: Ather planned to double retail network to 700 centres by FY2026 despite competitive pressure.</em></td></tr>
+      <tr><td>Customer Orientation</td><td>Strategic alignment with customer pain points. <em>Example: BlueStone's 8,000+ designs, customisation, made-to-order model built on customer feedback.</em></td></tr>
+      <tr><td>Adaptability & Flexibility</td><td>Willingness to pivot. <em>Example: Physics Wallah expanded from affordable content to a full platform across school to PG level.</em></td></tr>
+      <tr><td>Initiative & Proactiveness</td><td>Acting early before market becomes crowded. <em>Example: DeHaat — AI-enabled agritech in 12 states, 1.8M+ farmers served.</em></td></tr>
+      <tr><td>Commitment to Value Creation</td><td>Desire to create meaningful value beyond trading margins. <em>Example: Niramai — commercial purpose + women's healthcare social impact.</em></td></tr>
+    </tbody>
+  </table>
+
+  <div class="topic-h2">Skill-Sets</div>
+  <ul class="blist">
+    <li><strong>Opportunity Assessment Skill</strong> — Evaluating commercial feasibility, scalability, and differentiation (e.g., Zepto's dark-store logistics analysis).</li>
+    <li><strong>Strategic Planning Skill</strong> — Setting direction, prioritising investments, sequencing expansion (e.g., Ather's capital allocation).</li>
+    <li><strong>Innovation & Product Development Skill</strong> — Converting concept into differentiated product (e.g., Niramai's Thermalytix).</li>
+    <li><strong>Resource Mobilisation Skill</strong> — Acquiring people, capital, technology, and partnerships efficiently (e.g., DeHaat's 11,000+ centres via FPO partnerships).</li>
+    <li><strong>Marketing & Positioning Skill</strong> — Communicating value, building trust (e.g., BlueStone's digital-first positioning with money-back guarantee).</li>
+    <li><strong>Technology Leveraging Skill</strong> — Technology as strategic lever (e.g., Zepto's in-house agentic support architecture).</li>
+    <li><strong>Communication & Team-building Skill</strong> — Persuading investors, motivating teams (e.g., Physics Wallah's mission-first brand messaging).</li>
+    <li><strong>Financial Management Skill</strong> — Cost structures, funding strategy, capital allocation (e.g., Ather's IPO deployment plan).</li>
+    <li><strong>Scalability Management Skill</strong> — Systems thinking for scaling (e.g., DeHaat multi-state ecosystem; Zepto high-volume operations).</li>
+  </ul>
+
+  <!-- ENTREPRENEUR VS MANAGER -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-6">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-6')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.6</span>
+        <span class="acc-title">Entrepreneur versus Manager</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <table class="cmp-table">
+    <thead><tr><th>Basis</th><th>Entrepreneur</th><th>Manager</th></tr></thead>
+    <tbody>
+      <tr><td>Meaning</td><td>Identifies opportunity, starts venture, assumes risk, creates value through innovation.</td><td>Plans, organises, directs, and controls resources to achieve predetermined objectives.</td></tr>
+      <tr><td>Primary Role</td><td><strong>Creates</strong> the business.</td><td><strong>Operates</strong> the business.</td></tr>
+      <tr><td>Focus</td><td>Opportunity, innovation, growth, long-term value.</td><td>Execution, coordination, efficiency, stability.</td></tr>
+      <tr><td>Risk Bearing</td><td>Bears major business and financial risk.</td><td>Does not bear ownership risk; receives compensation for performance.</td></tr>
+      <tr><td>Ownership</td><td>Usually owner/founder/co-founder.</td><td>Usually an employee or appointed professional.</td></tr>
+      <tr><td>Decision Style</td><td>Strategic, bold, under ambiguity.</td><td>Structured, policy-bound, within organisational systems.</td></tr>
+      <tr><td>Innovation</td><td>Central to role — often introduces change.</td><td>May support innovation; more focused on implementation and control.</td></tr>
+      <tr><td>Reward</td><td>Profit, wealth creation, market share, long-term business gains.</td><td>Salary, incentives, allowances, performance bonuses.</td></tr>
+      <tr><td>Failure</td><td>Financial loss, reputational damage, closure.</td><td>Appraisal issues, demotion, or job loss — not ownership loss.</td></tr>
+      <tr><td>Change Role</td><td>Change <em>creator</em>.</td><td>Change <em>implementer</em> or stabiliser.</td></tr>
+    </tbody>
+  </table>
+  <div class="example-box">Ather Energy: <strong>Entrepreneurs</strong> (founders) = identified the EV market opportunity, took risk, developed the business vision. <strong>Managers</strong> = production, marketing, HR, and operations managers who ensure daily smooth functioning.</div>
+
+  <!-- OPPORTUNITY VS NECESSITY -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-7">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-7')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.7</span>
+        <span class="acc-title">Opportunity-Driven vs Necessity-Driven Entrepreneurship</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <table class="cmp-table">
+    <thead><tr><th>Basis</th><th>Opportunity/Market Driven</th><th>Necessity Driven</th></tr></thead>
+    <tbody>
+      <tr><td>Motivation</td><td>Proactive, growth-oriented — identified unmet need or emerging demand.</td><td>Reactive, survival-oriented — limited livelihood options or financial compulsion.</td></tr>
+      <tr><td>Triggering Factor</td><td>Innovation, consumer trends, technology shifts, visible market gaps.</td><td>Job loss, low household income, migration, economic hardship.</td></tr>
+      <tr><td>Objective</td><td>Growth, market capture, brand building, long-term value.</td><td>Income generation, self-employment, meeting immediate household expenses.</td></tr>
+      <tr><td>Risk & Planning</td><td>Higher planning, market research, business modelling, calculated risks.</td><td>Limited planning, minimal capital; immediate income more important.</td></tr>
+      <tr><td>Scale Potential</td><td>Higher potential for expansion, formalisation, investment, and innovation.</td><td>Often small, localised, and informal (though some may grow over time).</td></tr>
+      <tr><td>Examples</td><td>MBA graduate starting a fintech startup using market analytics; EV charging company founder.</td><td>Laid-off worker starting a roadside tea stall; migrant starting a food cart after returning to village.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- CREATIVITY VS INNOVATION -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-8">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-8')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.8</span>
+        <span class="acc-title">Creativity vs Innovation</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <table class="cmp-table">
+    <thead><tr><th>Basis</th><th>Creativity</th><th>Innovation</th></tr></thead>
+    <tbody>
+      <tr><td>Meaning</td><td>Generation of novel and useful <strong>ideas</strong>.</td><td>Application of creative ideas into <strong>practical use</strong>.</td></tr>
+      <tr><td>Nature</td><td>Conceptual and imaginative.</td><td>Practical and execution-oriented.</td></tr>
+      <tr><td>Focus</td><td>Idea creation.</td><td>Idea implementation.</td></tr>
+      <tr><td>Stage</td><td>Comes first.</td><td>Comes after creativity.</td></tr>
+      <tr><td>Risk Level</td><td>Relatively low (may remain at idea stage).</td><td>Higher — involves investment, testing, and execution.</td></tr>
+      <tr><td>Output</td><td>New thoughts, concepts, designs, or approaches.</td><td>New products, services, systems, or processes.</td></tr>
+      <tr><td>Measurement</td><td>Difficult to measure directly.</td><td>Measurable through market success, efficiency, adoption.</td></tr>
+      <tr><td>Example</td><td>Thinking of a mobile app connecting local farmers directly to consumers.</td><td>Actually developing, launching, and scaling that app in the market.</td></tr>
+    </tbody>
+  </table>
+  <div class="example-box">Café owner example: <strong>Creativity</strong> = thinking of a café with book readings, poetry evenings, mood-based customised drinks. <strong>Innovation</strong> = actually launching the café, designing the experience, marketing it, attracting a loyal customer base.</div>
+
+  <!-- CREATIVE PROCESS -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-9">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-9')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.9</span>
+        <span class="acc-title">Creative Process — 5 Stages</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <div class="stage-flow">
+    <div class="stage"><div class="stage-num">Stage 1</div><div class="stage-name">Idea Germination</div><div class="stage-desc">A seed-thought arises — vague sensing of a problem or opportunity. Raw initial impression.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Stage 2</div><div class="stage-name">Preparation</div><div class="stage-desc">Active effort: gathering information, observing needs, researching. Idea takes clearer shape.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Stage 3</div><div class="stage-name">Incubation</div><div class="stage-desc">Subconscious processing. Ideas develop internally even when not actively thinking about the problem.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Stage 4</div><div class="stage-name">Illumination</div><div class="stage-desc">The "aha" moment — breakthrough insight. The idea appears workable and confidence grows.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Stage 5</div><div class="stage-name">Verification</div><div class="stage-desc">Idea is tested, evaluated, and validated. Feasibility, viability, and commercial acceptability checked.</div></div>
+  </div>
+  <div class="example-box">Breakfast service example: <strong>Germination</strong> = noticing office-goers want healthy breakfast but have no time. <strong>Preparation</strong> = researching customer preferences, pricing, demand. <strong>Incubation</strong> = stepping back; subscription-box idea emerges naturally. <strong>Illumination</strong> = cloud kitchen + app-based subscription model. <strong>Verification</strong> = sample menus, cost testing, trial in one locality.</div>
+
+  <!-- DANHOF -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-10">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-10')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.10</span>
+        <span class="acc-title">Clarence Danhof's Classification of Entrepreneurs</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">Clarence Danhof classified entrepreneurs by their <strong>attitude towards innovation and speed of technology adoption</strong>, studying commercial farmers in the US (1820–1870). Four categories:</p>
+  <div class="classif-grid">
+    <div class="classif-card" style="border-left:3px solid var(--teal)"><div class="classif-card-name teal">Innovating Entrepreneurs</div><div class="classif-card-body">True pioneers. Introduce new goods, methods, markets, or organisational forms. First movers. Highly creative, forward-looking, strong appetite for uncertainty.<br><em>Example: Developer of AI-based irrigation system for small farmers — reshaping the market, not following it.</em></div></div>
+    <div class="classif-card" style="border-left:3px solid var(--green)"><div class="classif-card-name green">Imitative Entrepreneurs</div><div class="classif-card-body">Adopt successful innovations introduced by others. Strong in adaptation rather than invention. Help spread innovation across regions and sectors (important in developing economies).<br><em>Example: Entrepreneur who studies app-based dairy delivery in a metro and introduces a localised version in a tier-2 city.</em></div></div>
+    <div class="classif-card" style="border-left:3px solid var(--amber)"><div class="classif-card-name amber">Fabian Entrepreneurs</div><div class="classif-card-body">Extremely cautious and sceptical about change. Late adopters — move only when failure to change threatens competitive position. Conservative, prefer stability.<br><em>Example: Traditional store owner who adopts UPI and WhatsApp orders only after all competitors have.</em></div></div>
+    <div class="classif-card" style="border-left:3px solid var(--rose)"><div class="classif-card-name rose">Drone Entrepreneurs</div><div class="classif-card-body">Most resistant to innovation. Refuse new methods even when existing system becomes unprofitable. Highly rigid, tradition-bound, ignore market signals.<br><em>Example: Manufacturer continuing outdated machinery and manual record-keeping even after repeated losses.</em></div></div>
+  </div>
+
+  <!-- INTRAPRENEURSHIP -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-11">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-11')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.11</span>
+        <span class="acc-title">Intrapreneurship / Corporate Entrepreneurship (Hans Schollhammer)</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose"><strong>Intrapreneurship</strong> = entrepreneurial activity <em>within</em> an existing organisation. Individuals or teams inside a company behave entrepreneurially — generating new ideas, launching new products, creating new business units, or renewing existing operations.</p>
+  <div class="topic-h2">Schollhammer's 5 Types</div>
+  <table class="cmp-table">
+    <thead><tr><th>Type</th><th>Key Idea</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Administrative</td><td>Innovation in managerial techniques, systems, and processes. Competitive advantage through better coordination and control.</td><td>Company introduces data-driven performance management and cross-functional squads for faster decision-making.</td></tr>
+      <tr><td>Opportunistic</td><td>Alertness to environmental changes; acting quickly when a favourable opening appears.</td><td>Retail company notices spike in same-day delivery demand and quickly launches hyperlocal delivery unit before competitors.</td></tr>
+      <tr><td>Acquisitive</td><td>Gaining new capabilities, technologies, or market access by acquiring them from outside.</td><td>Traditional manufacturer acquires AI startup to gain smart-factory technology and talent.</td></tr>
+      <tr><td>Incubative</td><td>Generating and nurturing new ideas/ventures within the organisation through innovation labs or venture cells.</td><td>Large FMCG company creates internal innovation lab to develop a plant-based nutrition brand.</td></tr>
+      <tr><td>Imitative</td><td>Adopting an idea or model that exists elsewhere and applying it with suitable adaptation.</td><td>Domestic education company introduces subscription-based learning app (inspired by global models) with regional-language content and local curriculum.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- TECHNOPRENEURSHIP / ECOPRENEURSHIP / SOCIAL -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-12">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-12')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.12</span>
+        <span class="acc-title">Entrepreneurship in Different Contexts</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <table class="cmp-table">
+    <thead><tr><th>Type</th><th>Primary Driver</th><th>Core Purpose</th><th>Indian Example</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Technopreneurship</strong></td><td>Technology and innovation</td><td>Convert technical knowledge into market value. Technology is the heart of the business model.</td><td>Zoho — software products for business functions; technology-led value creation. High-tech, R&D-focused, scalable.</td></tr>
+      <tr><td><strong>Ecopreneurship</strong></td><td>Environment and sustainability</td><td>Create business value while reducing environmental harm. Environmental mission at core — not an afterthought.</td><td>Chakr Innovation — cleantech company; emission-control device for diesel generators. Triple orientation: economic + ecological + sustainability.</td></tr>
+      <tr><td><strong>Social Entrepreneurship</strong></td><td>Social mission and social change</td><td>Solve social problems through entrepreneurial means. Social impact measured, not just profit.</td><td>SELCO Foundation — sustainable energy for underserved communities. Poverty alleviation through clean energy access.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- WOMEN IN ENTREPRENEURSHIP -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-1-13">
+    <div class="acc-hdr" onclick="toggleAcc('acc-1-13')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">1.13</span>
+        <span class="acc-title">Women in Entrepreneurship</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">Women entrepreneurs in India own only about <strong>one-fifth of all enterprises</strong>, most of which remain micro and informal. Their participation spans retail, services, food, handicrafts, beauty & wellness, education, digital commerce, agribusiness, and social enterprises.</p>
+  <div class="topic-h2">Major Challenges</div>
+  <ul class="blist">
+    <li><strong>Limited Access to Finance</strong> — Inadequate collateral, lower formal asset ownership, weak credit histories. Women-owned SMEs in developing countries face a major financing gap.</li>
+    <li><strong>Lack of Networks & Mentorship</strong> — Fewer professional contacts, reduced access to investors and market information.</li>
+    <li><strong>Technology & Market Access Constraints</strong> — Limited digital tools and technology adoption support, restricting productivity and scale.</li>
+    <li><strong>Concentration in Low-profit Sectors</strong> — Retail and services typically offer lower margins than electronics, software, or construction.</li>
+    <li><strong>Social & Cultural Barriers</strong> — Gender norms, mobility restrictions, time poverty, unequal care responsibilities, adverse social norms (NITI Aayog).</li>
+    <li><strong>Scale & Formalisation Issues</strong> — Micro and informal ventures struggle with registration, compliance, taxation, branding, and long-term scaling.</li>
+  </ul>
+  <div class="topic-h2">Support Ecosystem — NITI Aayog's Women Entrepreneurship Platform (WEP)</div>
+  <p class="prose">WEP is a Government of India-backed initiative acting as an aggregator of support, providing access to: <strong>incubation & acceleration, skilling & mentorship, marketing assistance, funding support, compliance & tax assistance, and community/networking resources.</strong></p>
+
+  <!-- ★ IMPORTANT QUESTIONS -->
+    </div>
+  </div>
+  <div class="pyq-section">
+    <div class="pyq-header">
+      <span class="pyq-star">★</span>
+      <div>
+        <div class="pyq-title">Important Questions — Unit 1</div>
+        <div class="pyq-subtitle">Past Year Questions · Frequency Rated</div>
+      </div>
+    </div>
+    <div class="pyq-note">This unit focuses heavily on <strong>classifications and conceptual differences</strong>. Danhof's classification and the Creativity/Innovation distinction are perennial favourites.</div>
+    <ul class="pyq-list">
+      <li><span class="pyq-star-icon">★</span><span class="high-freq">Discuss Clarence Danhof's classification of entrepreneurs based on their attitude towards innovation and technology adoption. Give examples.</span><span class="pyq-marks">3/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span class="high-freq">With the help of a diagram or flowchart, explain the 5-step process of creativity in entrepreneurship.</span><span class="pyq-marks">3/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span>Who are social entrepreneurs? How does social entrepreneurship differ from commercial entrepreneurship?</span><span class="pyq-marks">2/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span>Who is an intrapreneur? How do they differ from an entrepreneur? Discuss Hans Schollhammer's classification of corporate entrepreneurs.</span><span class="pyq-marks">2/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span>What are the unique challenges and opportunities faced by women entrepreneurs in India?</span><span class="pyq-marks">2/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span>Distinguish between 'creativity' and 'innovation'. Give examples of how firms can provide stimulus to both.</span><span class="pyq-marks">2/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>Is there any difference between an 'opportunity-driven' and a 'necessity-driven' entrepreneur? Justify with reasons.</span><span class="pyq-marks">1/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>Discuss the main functions played by an entrepreneur in developing an economy.</span><span class="pyq-marks">1/4 yrs</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══ UNIT 2 VIEW ═══ -->
+<div class="view u2-page" id="view-u2">
+  <button class="back-btn" onclick="showView('home')">← Back to Overview</button>
+  <div class="section-header">
+    <div class="section-unit-tag gold">Unit 2 · 8 Lectures</div>
+    <div class="section-title">Family Business</div>
+    <div class="section-desc">Concept, advantages, disadvantages, founder's role, non-family members, women, succession planning, and conflict resolution.</div>
+  </div>
+
+  <!-- CONCEPT -->
+  <div class="acc-item" id="acc-2-1">
+    <div class="acc-hdr" onclick="toggleAcc('acc-2-1')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">2.1</span>
+        <span class="acc-title">Family Business — Concept, Advantages & Disadvantages</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">A family business is one where a family owns a controlling interest and members of the family participate in management. It is the most common form of business organisation in India and globally. The family brings together ownership, control, and management under one roof.</p>
+
+  <div class="topic-h2">Advantages</div>
+  <ul class="blist">
+    <li><strong>Strong Commitment & Loyalty</strong> — Family members are deeply committed to the business's success; they often work harder than professional managers.</li>
+    <li><strong>Long-term Vision</strong> — Family businesses tend to prioritise long-term sustainability over short-term profits.</li>
+    <li><strong>Trust & Low Transaction Costs</strong> — High trust among family members reduces monitoring costs and agency problems.</li>
+    <li><strong>Flexibility & Quick Decision-Making</strong> — Without bureaucratic layers, decisions can be made swiftly.</li>
+    <li><strong>Preservation of Values & Culture</strong> — Unique organisational culture shaped by the founder's values can become a competitive advantage.</li>
+    <li><strong>Stability</strong> — Lower likelihood of hostile takeovers; family retains control.</li>
+  </ul>
+
+  <div class="topic-h2">Disadvantages</div>
+  <ul class="blist">
+    <li><strong>Nepotism & Lack of Meritocracy</strong> — Appointments may be based on family ties rather than competence.</li>
+    <li><strong>Succession Problems</strong> — Unclear succession planning leads to conflict and instability.</li>
+    <li><strong>Resistance to Change</strong> — Older generations may resist modernisation, professionalisation, and diversification.</li>
+    <li><strong>Conflict Spillover</strong> — Personal and family disputes can disrupt business operations.</li>
+    <li><strong>Limited Access to Capital</strong> — Reluctance to dilute family control can restrict external investment.</li>
+    <li><strong>Role Ambiguity</strong> — Blurred boundaries between family and business roles can create confusion.</li>
+  </ul>
+
+  <!-- FOUNDER'S ROLE -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-2-2">
+    <div class="acc-hdr" onclick="toggleAcc('acc-2-2')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">2.2</span>
+        <span class="acc-title">Role of Founder(s) in Family Business</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">The founder plays a central and defining role in shaping the character, culture, and direction of a family business. The founder's values, business philosophy, and behavioural orientations become the invisible architecture of the enterprise.</p>
+  <ul class="blist">
+    <li><strong>Value Formation</strong> — The founder establishes the core values (integrity, hard work, frugality, innovation) that guide the business's ethical culture for generations.</li>
+    <li><strong>Business Philosophy</strong> — The founder's approach to customers, employees, partners, and competitors shapes the organisation's identity.</li>
+    <li><strong>Behavioural Orientation</strong> — Risk appetite, leadership style, and work habits of the founder become embedded norms.</li>
+    <li><strong>Cultural Legacy</strong> — The founder's legacy can be both a strength (strong values, loyal culture) and a constraint (resistance to change, difficulty letting go).</li>
+  </ul>
+  <div class="example-box">The founder's reluctance to professionalise may preserve certain values but can also prevent the business from adapting to market changes. For example, a founder who micromanages may prevent the next generation from developing leadership skills.</div>
+
+  <!-- NON-FAMILY MEMBERS -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-2-3">
+    <div class="acc-hdr" onclick="toggleAcc('acc-2-3')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">2.3</span>
+        <span class="acc-title">Role of Non-Family Members in Family Business</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">Non-family members (professional managers, independent directors, advisors) play an important and often underappreciated role in family businesses. Their involvement can be crucial to professionalisation and growth.</p>
+  <ul class="blist">
+    <li><strong>Objectivity & Neutrality</strong> — Non-family professionals can evaluate proposals on commercial grounds rather than personal preference.</li>
+    <li><strong>Technical & Managerial Expertise</strong> — Professional CEOs, CFOs, or functional heads bring specialised skills that may be absent in the family.</li>
+    <li><strong>Conflict Mediation</strong> — Outside advisors or board members can help mediate family disputes.</li>
+    <li><strong>Credibility with External Stakeholders</strong> — Banks, investors, and partners often gain confidence when a family business has professional management.</li>
+    <li><strong>Succession Bridge</strong> — Non-family managers can maintain continuity during succession transitions.</li>
+  </ul>
+
+  <!-- WOMEN IN FAMILY BUSINESS -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-2-4">
+    <div class="acc-hdr" onclick="toggleAcc('acc-2-4')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">2.4</span>
+        <span class="acc-title">Role of Women in Family Business</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">Women play a critical but often invisible role in family businesses. They may contribute as silent partners, operational anchors, relationship managers, or increasingly as leaders and successors.</p>
+  <ul class="blist">
+    <li><strong>Behind-the-scenes Contributors</strong> — Managing accounts, supplier relationships, daily operations, or quality control without formal titles.</li>
+    <li><strong>Culture Carriers</strong> — Women often maintain the family values and culture that underpin business identity.</li>
+    <li><strong>Next-generation Leaders</strong> — Increasingly, daughters are being recognised as competent successors, challenging traditional gender biases in succession.</li>
+    <li><strong>Challenge: Gender Bias in Succession</strong> — In many traditional family businesses, daughters may be overlooked despite strong competence; sons may be preferred based on convention rather than merit.</li>
+  </ul>
+
+  <!-- SUCCESSION PLANNING -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-2-5">
+    <div class="acc-hdr" onclick="toggleAcc('acc-2-5')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">2.5</span>
+        <span class="acc-title">Succession Planning: Choosing and Grooming Successors</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose"><strong>Succession planning</strong> refers to the process of identifying, preparing, and transitioning the leadership of a family business from one generation to the next. It is one of the most critical and challenging tasks in a family business.</p>
+
+  <div class="topic-h2">Process of Choosing Successors</div>
+  <ul class="blist">
+    <li><strong>Early Identification of Potential</strong> — Assess family members' interest, aptitude, and capability from an early stage. Don't wait for crisis.</li>
+    <li><strong>Merit-Based Assessment</strong> — Evaluate based on education, skills, performance, and demonstrated leadership — not birth order or affection.</li>
+    <li><strong>Clear Eligibility Criteria</strong> — Define what qualifications, experience, or competencies are required for the leadership role.</li>
+    <li><strong>Open Family Communication</strong> — Discuss succession openly to reduce speculation, rivalry, and resentment.</li>
+    <li><strong>Gender-Inclusive Process</strong> — Daughters and other female members should receive equal consideration as potential successors.</li>
+  </ul>
+
+  <div class="topic-h2">Process of Grooming Successors</div>
+  <ul class="blist">
+    <li><strong>Education & Formal Training</strong> — Encouraging relevant degrees (business, finance, engineering) combined with practical industry exposure.</li>
+    <li><strong>External Work Experience</strong> — Working outside the family business builds independent perspective, skills, and credibility.</li>
+    <li><strong>Gradual Delegation of Authority</strong> — Start with smaller responsibilities; progressively assign larger decisions (product line → branch → business vertical).</li>
+    <li><strong>Involvement in Strategic Decision-Making</strong> — Invite successor into discussions on expansion, financing, partnerships, and long-term planning.</li>
+    <li><strong>Building Stakeholder Relationships</strong> — The successor must develop relationships with customers, suppliers, employees, bankers, and extended family stakeholders.</li>
+  </ul>
+
+  <div class="topic-h2">Common Challenges in Succession</div>
+  <ul class="blist">
+    <li>Emotional bias — choosing based on affection, seniority, or tradition rather than merit.</li>
+    <li>Rivalry among siblings or cousins.</li>
+    <li>Founder's reluctance to let go — postponing succession to retain power.</li>
+    <li>Lack of interest among the next generation.</li>
+    <li>Inadequate preparation — successor chosen but not properly trained.</li>
+    <li>Resistance from existing employees.</li>
+    <li>Gender bias — daughters overlooked despite strong competence.</li>
+  </ul>
+
+  <!-- CONFLICT -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-2-6">
+    <div class="acc-hdr" onclick="toggleAcc('acc-2-6')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">2.6</span>
+        <span class="acc-title">Conflict in Family Business & Its Resolution</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">Conflict in a family business refers to <strong>disagreements, tension, or clashes among family members</strong> arising from differences in ownership, management, succession, control, rewards, values, or interpersonal relationships. It is both a managerial issue and a relational issue.</p>
+
+  <div class="topic-h2">Major Causes of Conflict</div>
+  <ul class="blist">
+    <li><strong>Succession-related Conflict</strong> — Disagreement over who will lead the business in the future. Example: Two siblings both believing they are more suitable to succeed the founder.</li>
+    <li><strong>Role Ambiguity</strong> — Unclear roles and responsibilities lead to interference. Example: A brother handling finance frustrated by another sibling's interference.</li>
+    <li><strong>Unequal Contribution vs Equal Reward</strong> — Active members resent equal rewards for passive owners. Example: Daughter managing operations vs sibling not involved in business.</li>
+    <li><strong>Ownership & Control Issues</strong> — Disputes over shareholding, voting power, dividend policy, or strategic control. Become more complex across generations.</li>
+    <li><strong>Differences in Vision & Strategy</strong> — Older generation: conservative expansion. Younger generation: digital transformation, outside investment.</li>
+    <li><strong>Personal & Emotional Rivalries</strong> — Past grievances, sibling rivalry, parental favouritism, perceived injustice.</li>
+    <li><strong>Lack of Professionalism</strong> — Appointments based on family status rather than competence.</li>
+    <li><strong>Entry of In-laws or Extended Family</strong> — Undue influence without clear boundaries.</li>
+    <li><strong>Generational Transition</strong> — Different work styles, values, and communication expectations.</li>
+    <li><strong>Communication Breakdown</strong> — Avoiding difficult issues allows resentment to build quietly over time.</li>
+  </ul>
+
+  <div class="topic-h2">Types of Conflict</div>
+  <table class="cmp-table">
+    <thead><tr><th>Type</th><th>Nature</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Task Conflict</td><td>Disagreement over business matters — strategy, operations, budgeting. If handled well, can be constructive.</td><td>Two family members disagree about whether to enter e-commerce.</td></tr>
+      <tr><td>Relationship Conflict</td><td>Emotional tension, personality clashes, ego issues, or mistrust. Usually more damaging.</td><td>Two brothers stop speaking properly due to long-term resentment.</td></tr>
+      <tr><td>Process Conflict</td><td>Disagreement over how work should be done or how authority should be exercised.</td><td>Disagreement over whether important decisions should be made collectively or by the MD alone.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="topic-h2">Resolution Mechanisms</div>
+  <div class="classif-grid">
+    <div class="classif-card card-accent" style="border-left:3px solid var(--gold)"><div class="classif-card-name gold">Open & Structured Communication</div><div class="classif-card-body">Periodic family business meetings. Clears assumptions, reduces suspicion, creates emotional ventilation.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--gold)"><div class="classif-card-name gold">Clear Role Definition</div><div class="classif-card-body">Each member has a formally assigned role with clear authority boundaries. Avoids overlap and interference.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--gold)"><div class="classif-card-name gold">Merit-Based Systems</div><div class="classif-card-body">Appointments, promotions, and salaries based on competence, contribution, and performance — not birth order.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--gold)"><div class="classif-card-name gold">Formal Succession Planning</div><div class="classif-card-body">Early identification, defined criteria, grooming plan. Reduces uncertainty and prevents rivalry.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--gold)"><div class="classif-card-name gold">Family Constitution / Charter</div><div class="classif-card-body">Written document recording agreed principles on ownership, employment, succession, dividend policy, dispute resolution, and family values.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--gold)"><div class="classif-card-name gold">Family Council / Governance</div><div class="classif-card-body">Forum to discuss family-related business issues separately from day-to-day management. Advisory boards for larger businesses.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--gold)"><div class="classif-card-name gold">Non-family Professionals</div><div class="classif-card-body">Neutral executives, advisors, or directors bring objectivity and reduce emotional intensity of decision-making.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--gold)"><div class="classif-card-name gold">External Mediation</div><div class="classif-card-body">If internal discussion fails, an external mediator (consultant, mentor, lawyer, respected elder) can resolve disputes.</div></div>
+  </div>
+
+  <!-- ★ IMPORTANT QUESTIONS -->
+    </div>
+  </div>
+  <div class="pyq-section">
+    <div class="pyq-header">
+      <span class="pyq-star">★</span>
+      <div>
+        <div class="pyq-title">Important Questions — Unit 2</div>
+        <div class="pyq-subtitle">Past Year Questions · Frequency Rated</div>
+      </div>
+    </div>
+    <div class="pyq-note"><strong>Highly predictable unit.</strong> The examiner almost exclusively tests <strong>conflicts</strong> and <strong>succession planning</strong> in 8-to-12 mark blocks. Prepare these thoroughly.</div>
+    <ul class="pyq-list">
+      <li><span class="pyq-star-icon">★</span><span class="high-freq">What are the common causes of conflict in an Indian family-run business, and what effective strategies/mechanisms can prevent and manage them?</span><span class="pyq-marks">3/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span class="high-freq">Discuss, in detail, the process of effectively choosing and grooming successors to ensure long-term sustainability in a family business.</span><span class="pyq-marks">3/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>Mention the advantages and disadvantages of family-run businesses.</span><span class="pyq-marks">1/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>Identify the role of the founder in shaping the culture of a family business. Could the founder's legacy become a constraining factor for future generations?</span><span class="pyq-marks">1/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>Do you think that a non-family member has any role to play in a family-owned business? Explain.</span><span class="pyq-marks">1/4 yrs</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══ UNIT 3 VIEW ═══ -->
+<div class="view u3-page" id="view-u3">
+  <button class="back-btn" onclick="showView('home')">← Back to Overview</button>
+  <div class="section-header">
+    <div class="section-unit-tag green">Unit 3 · 12 Lectures</div>
+    <div class="section-title">Public & Private System of Support</div>
+    <div class="section-desc">Start-ups, growth models, finance sources, incubators, angel investors, venture capital, SHGs, and private equity.</div>
+  </div>
+
+  <!-- START-UPS -->
+  <div class="acc-item" id="acc-3-1">
+    <div class="acc-hdr" onclick="toggleAcc('acc-3-1')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">3.1</span>
+        <span class="acc-title">Start-ups: Concept</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose"><strong>Steve Blank's definition:</strong> A start-up is <em>"a temporary organization designed to search for a repeatable and scalable business model"</em>, explicitly contrasting it with small businesses that execute a stable, known model. Growth ambition, scalability, and uncertainty of the business model are central — not age alone.</p>
+
+  <table class="cmp-table">
+    <thead><tr><th>Basis</th><th>Start-up</th><th>Small Business</th></tr></thead>
+    <tbody>
+      <tr><td>Meaning</td><td>Newly established venture built around an innovative idea with high growth potential.</td><td>Modest-scale business set up mainly to earn regular income by serving an existing market.</td></tr>
+      <tr><td>Objective</td><td>Rapid growth, market expansion, and scalability.</td><td>Stable income, survival, and long-term continuity.</td></tr>
+      <tr><td>Innovation</td><td>Innovation is usually the foundation. Often offers something new or disruptive.</td><td>May not be innovative; often follows an existing and proven model.</td></tr>
+      <tr><td>Risk Level</td><td>High — model is new and uncertain.</td><td>Relatively lower — operates in a familiar market.</td></tr>
+      <tr><td>Funding</td><td>Often depends on angel investors or venture capital.</td><td>Usually funded through personal savings, family funds, or bank loans.</td></tr>
+      <tr><td>Profit</td><td>May prioritise growth over immediate profit in early stage.</td><td>Profit earning is usually an immediate and central goal.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- TYPES OF STARTUPS -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-3-2">
+    <div class="acc-hdr" onclick="toggleAcc('acc-3-2')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">3.2</span>
+        <span class="acc-title">Types of Start-ups</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <div class="topic-h2">Steve Blank's 6 Types</div>
+  <table class="cmp-table">
+    <thead><tr><th>Type</th><th>Description</th><th>Indian Example</th></tr></thead>
+    <tbody>
+      <tr><td>Lifestyle</td><td>Support founder's preferred way of life. Autonomy, flexibility, personal satisfaction over aggressive expansion.</td><td>Travel photographer in Goa; freelance digital marketing consultant in Kolkata; yoga trainer in Rishikesh.</td></tr>
+      <tr><td>Small Business</td><td>Owner-managed, regular income for family. Local/regional markets, conventional models. Stable profitability.</td><td>Family sweet shop in Kolkata; neighborhood salon in Siliguri; local bakery in Durgapur.</td></tr>
+      <tr><td>Scalable</td><td>Designed for rapid expansion into large markets from the start. Technology, network effects, external funding.</td><td>Flipkart (early years), Ola, Swiggy, Byju's.</td></tr>
+      <tr><td>Buyable ("Flippable")</td><td>Built to be acquired by a larger firm. Creates niche product or unique capability attractive to bigger players.</td><td>Little Eye Labs (acquired by Facebook); ZipDial (acquired by Twitter).</td></tr>
+      <tr><td>Large Company (Corporate)</td><td>Entrepreneurial initiatives within established corporations. Access to resources but may face bureaucratic delays.</td><td>Reliance Jio (within Reliance Industries); Tata Motors' EV initiatives.</td></tr>
+      <tr><td>Social Start-up</td><td>Entrepreneurial methods to solve social/environmental problems. Performance assessed by social impact, not just profit.</td><td>Akshaya Patra Foundation (mid-day meals); SELCO India (sustainable energy).</td></tr>
+    </tbody>
+  </table>
+
+  <!-- MISTAKES -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-3-3">
+    <div class="acc-hdr" onclick="toggleAcc('acc-3-3')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">3.3</span>
+        <span class="acc-title">Common Mistakes by Start-ups in Early Phases</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <ul class="blist">
+    <li><strong>Premature Scaling</strong> — Trying to grow too fast before validating the business model.</li>
+    <li><strong>Poor Cash Flow Management</strong> — Running out of cash despite having a good product idea.</li>
+    <li><strong>Founder Conflicts</strong> — Disputes among co-founders without clear equity, role, and decision-making agreements.</li>
+    <li><strong>Ignoring Customer Feedback</strong> — Building what founders think customers want rather than what they actually need.</li>
+    <li><strong>Neglecting Legal & Compliance Issues</strong> — Overlooking IP protection, contracts, or regulatory requirements.</li>
+    <li><strong>Hiring Mistakes</strong> — Hiring too quickly or hiring the wrong people for early-stage needs.</li>
+    <li><strong>Weak Product-Market Fit</strong> — Launching without sufficient validation that the market wants the product.</li>
+  </ul>
+
+  <!-- 4 STAGE GROWTH MODEL -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-3-4">
+    <div class="acc-hdr" onclick="toggleAcc('acc-3-4')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">3.4</span>
+        <span class="acc-title">Four-Stage Growth Model</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <div class="stage-flow">
+    <div class="stage"><div class="stage-num">Stage 1</div><div class="stage-name">Seed / Inception</div><div class="stage-desc">Idea validation, prototype, and initial market testing. High uncertainty, founder-dependent.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Stage 2</div><div class="stage-name">Early Growth</div><div class="stage-desc">First customers, initial revenue, team building. Product-market fit begins to emerge.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Stage 3</div><div class="stage-name">Expansion</div><div class="stage-desc">Rapid scaling, new markets, external funding. Processes and systems become critical.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Stage 4</div><div class="stage-name">Maturity / Public Offering</div><div class="stage-desc">Scale-up, market leadership, IPO or strategic exit. Professionalisation and governance.</div></div>
+  </div>
+
+  <!-- FINANCE SOURCES -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-3-5">
+    <div class="acc-hdr" onclick="toggleAcc('acc-3-5')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">3.5</span>
+        <span class="acc-title">Requirement & Sources of Finance (Phase-wise)</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <table class="cmp-table">
+    <thead><tr><th>Phase</th><th>Finance Need</th><th>Typical Sources</th></tr></thead>
+    <tbody>
+      <tr><td>Seed / Inception</td><td>Product development, MVP, market validation. Small amounts but critical for survival.</td><td>Bootstrapping (personal savings), Friends & Family, Seed Capital, Angel Investors, Incubators.</td></tr>
+      <tr><td>Early Growth</td><td>Team expansion, marketing, scaling initial operations.</td><td>Angel Investors, Seed VC, Government Grants (DPIIT, Startup India).</td></tr>
+      <tr><td>Expansion</td><td>Rapid scaling, new geographies, infrastructure. Larger capital needs.</td><td>Venture Capital (Series A, B, C), Strategic Partnerships, Private Equity.</td></tr>
+      <tr><td>Maturity / Public Offering</td><td>Large-scale capital for global expansion, market leadership.</td><td>IPO (Public Offering), Private Equity, Debt instruments.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="topic-h2">Bootstrap Finance</div>
+  <p class="prose"><strong>Bootstrap finance</strong> = funding a business using only the founder's own savings, retained earnings, and revenue generated by the business itself — without relying on external investment. Advantages: full control, no dilution of equity, financial discipline. Example: Zoho grew largely through bootstrapping.</p>
+
+  <div class="topic-h2">Seed Capital</div>
+  <p class="prose"><strong>Seed capital</strong> = the initial funding used to validate an idea and build an early prototype or minimum viable product. It is the earliest stage of external investment — often small amounts from angel investors, friends & family, or incubators. It helps a startup move from idea to proof-of-concept.</p>
+
+  <!-- SUPPORT INSTITUTIONS COMPARISON -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-3-6">
+    <div class="acc-hdr" onclick="toggleAcc('acc-3-6')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">3.6</span>
+        <span class="acc-title">Support Institutions — Comparative Overview</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <table class="cmp-table">
+    <thead><tr><th>Institution</th><th>Nature</th><th>Main Objective</th><th>Stage Served</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Industries'/Entrepreneurs' Associations</strong></td><td>Collective bodies of firms/entrepreneurs to represent common business interests.</td><td>Promote, protect, advance collective interests; policy advocacy, networking.</td><td>All stages; SMEs and established enterprises.</td></tr>
+      <tr><td><strong>Self-Help Groups (SHGs)</strong></td><td>Small voluntary groups of similar socio-economic backgrounds for savings and internal lending.</td><td>Promote thrift, financial inclusion, empowerment, and livelihood support among members.</td><td>Micro-enterprises; rural women; marginalized communities.</td></tr>
+      <tr><td><strong>Business Incubators</strong></td><td>Institutional platforms to nurture start-ups through mentoring, facilities, and business support.</td><td>Help new ventures survive, refine their model, and become commercially viable.</td><td>Seed and early-stage start-ups.</td></tr>
+      <tr><td><strong>Angel Investors</strong></td><td>Affluent individuals who invest their own money in young start-ups.</td><td>Support promising early-stage ventures; earn returns through future appreciation.</td><td>Seed and early-stage.</td></tr>
+      <tr><td><strong>Venture Capital</strong></td><td>Professionally managed investment institutions investing pooled funds in scalable, high-growth ventures.</td><td>Finance rapid growth and scaling of ventures with strong market potential.</td><td>Early growth to expansion stage.</td></tr>
+      <tr><td><strong>Private Equity Funds</strong></td><td>Professional investment funds investing in more established private companies.</td><td>Create enterprise value through expansion, restructuring, efficiency improvement, and strategic transformation.</td><td>Mature businesses, expansion-stage firms, companies needing turnaround.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="topic-h2">Angel Investors vs Venture Capitalists — Key Differences</div>
+  <table class="cmp-table">
+    <thead><tr><th>Basis</th><th>Angel Investors</th><th>Venture Capitalists</th></tr></thead>
+    <tbody>
+      <tr><td>Source of Funds</td><td>Own personal wealth.</td><td>Pooled funds from institutional investors (pension funds, HNIs, endowments).</td></tr>
+      <tr><td>Stage of Investment</td><td>Seed and early-stage (higher risk).</td><td>Early growth, expansion, Series A–C.</td></tr>
+      <tr><td>Investment Size</td><td>Smaller amounts (typically ₹25L–₹5Cr).</td><td>Larger amounts (typically ₹5Cr and above per round).</td></tr>
+      <tr><td>Decision-Making</td><td>Individual decision, faster.</td><td>Institutional process, due diligence by investment committee.</td></tr>
+      <tr><td>Involvement</td><td>Often more hands-on; may provide mentoring, networks, guidance.</td><td>Board representation, financial discipline, performance targets.</td></tr>
+      <tr><td>Return Expectations</td><td>Higher risk tolerance; expect returns over longer period.</td><td>More structured return expectations; targeted IRR, defined investment horizon.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- SHGs -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-3-7">
+    <div class="acc-hdr" onclick="toggleAcc('acc-3-7')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">3.7</span>
+        <span class="acc-title">Role of Self-Help Groups (SHGs)</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">SHGs are small, voluntary groups — usually 10–20 members from similar socio-economic backgrounds — that pool savings, provide internal loans, and support each other's livelihoods. They are especially important for <strong>rural women's economic empowerment</strong>.</p>
+  <ul class="blist">
+    <li><strong>Financial Inclusion</strong> — Provide access to credit for members who cannot access formal banking systems.</li>
+    <li><strong>Women's Empowerment</strong> — Enable women to earn independently, take financial decisions, and gain confidence.</li>
+    <li><strong>Livelihood Support</strong> — Help members start or expand small enterprises (handicrafts, food processing, tailoring).</li>
+    <li><strong>Social Capital Building</strong> — Create networks of mutual trust, cooperation, and collective bargaining power.</li>
+    <li><strong>Linkage Banking</strong> — SHGs often get linked to formal banks (NABARD SHG-Bank Linkage Programme) to access higher credit.</li>
+  </ul>
+
+  <!-- KEY EXAMPLES -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-3-8">
+    <div class="acc-hdr" onclick="toggleAcc('acc-3-8')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">3.8</span>
+        <span class="acc-title">Examples of Entrepreneurs'/Industries' Associations</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <ul class="blist">
+    <li><strong>CII (Confederation of Indian Industry)</strong> — Policy dialogue, business networking, skill development, sustainability promotion.</li>
+    <li><strong>FICCI (Federation of Indian Chambers of Commerce and Industry)</strong> — National-level industry voice; business policy, trade, innovation.</li>
+    <li><strong>ASSOCHAM</strong> — Business interests in policy matters; workshops on tax reforms, industry needs, economic policy.</li>
+    <li><strong>Laghu Udyog Bharati</strong> — Focused on MSMEs; advocates for credit, compliance, and market access for small industry.</li>
+    <li><strong>Local/District Industry Associations</strong> — Help local units access state subsidies, land availability, and industrial clearances.</li>
+  </ul>
+
+  <!-- ★ IMPORTANT QUESTIONS -->
+    </div>
+  </div>
+  <div class="pyq-section">
+    <div class="pyq-header">
+      <span class="pyq-star">★</span>
+      <div>
+        <div class="pyq-title">Important Questions — Unit 3</div>
+        <div class="pyq-subtitle">Past Year Questions · Frequency Rated</div>
+      </div>
+    </div>
+    <div class="pyq-note">This unit is all about <strong>funding and incubation</strong>. Expect to write <strong>comparative answers</strong> between different funding types. Angel vs VC is a top pick.</div>
+    <ul class="pyq-list">
+      <li><span class="pyq-star-icon">★</span><span class="high-freq">Explain the role played by business incubators. What types of services do they offer to support the growth and networking of start-ups?</span><span class="pyq-marks">4/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span class="high-freq">How do Angel Investors differ from Venture Capitalists regarding investment criteria, funding structure, and level of involvement?</span><span class="pyq-marks">4/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span>Discuss the main differences between a Private Equity Fund and Venture Capital.</span><span class="pyq-marks">2/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span>Write short notes on: (a) Seed capital (b) Bootstrap finance.</span><span class="pyq-marks">2/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>Discuss some of the common mistakes faced by startups in their early phases.</span><span class="pyq-marks">1/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>In what ways do Self-Help Groups (SHGs) contribute to the economic empowerment of women, particularly in rural India?</span><span class="pyq-marks">1/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>Give any three advantages of a startup going public (Public Offering).</span><span class="pyq-marks">1/4 yrs</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══ UNIT 4 VIEW ═══ -->
+<div class="view u4-page" id="view-u4">
+  <button class="back-btn" onclick="showView('home')">← Back to Overview</button>
+  <div class="section-header">
+    <div class="section-unit-tag purple">Unit 4 · 12 Lectures</div>
+    <div class="section-title">Feasibility Studies & Business Plans</div>
+    <div class="section-desc">Feasibility study concept and types, business plan structure and drafting, pitch deck, and business model canvas.</div>
+  </div>
+
+  <!-- FEASIBILITY STUDIES -->
+  <div class="acc-item" id="acc-4-1">
+    <div class="acc-hdr" onclick="toggleAcc('acc-4-1')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">4.1</span>
+        <span class="acc-title">Concept of Feasibility Studies</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">A feasibility study is a <strong>systematic, detailed assessment undertaken before starting a project, business, product, or expansion plan</strong> to determine whether the proposal is practical, viable, and worth pursuing. It answers the fundamental question: <em>"Should this project be undertaken?"</em></p>
+  <p class="prose">It is a <strong>pre-investment appraisal tool</strong> that reduces uncertainty and helps entrepreneurs, managers, and investors avoid costly mistakes.</p>
+
+  <div class="topic-h2">What a Feasibility Study Examines</div>
+  <ul class="blist">
+    <li>Whether the <strong>market exists</strong> for the product/service.</li>
+    <li>Whether the <strong>technology is workable</strong>.</li>
+    <li>Whether the <strong>finances are viable</strong>.</li>
+    <li>Whether the organisation has the <strong>capability to execute</strong>.</li>
+    <li>Whether <strong>legal or regulatory barriers</strong> exist.</li>
+    <li>Whether the project aligns with <strong>time and risk constraints</strong>.</li>
+  </ul>
+
+  <div class="topic-h2">Importance of Feasibility Study</div>
+  <ul class="blist">
+    <li><strong>Reducing Business Risk</strong> — Identifies risks before large sums of money are committed. <em>Example: Premium vegan café in a small town — feasibility study may reveal insufficient local demand.</em></li>
+    <li><strong>Supporting Informed Decision-Making</strong> — Helps decide: accept, modify, postpone, or reject. <em>Example: Online grocery delivery venture discovers strong competition → redesigns for a niche segment.</em></li>
+    <li><strong>Estimating Resource Requirements</strong> — Capital, manpower, technology, machinery, raw materials, infrastructure, time, managerial capacity. <em>Example: Packaged spice manufacturing unit — estimate machinery, factory, packaging, labour, branding costs.</em></li>
+    <li><strong>Identifying Possible Constraints</strong> — Market, technical, financial, legal, environmental/social constraints. <em>Example: Food processing unit near residential area — pollution clearance and waste disposal issues discovered early.</em></li>
+    <li><strong>Improving Planning Quality</strong> — Refines the business model, helps choose location, finalise product mix, set pricing. <em>Example: Cloud kitchen founder decides to begin with 2 high-demand cuisines rather than 10.</em></li>
+    <li><strong>Building Investor Confidence</strong> — Demonstrates informed analysis beyond mere enthusiasm. Banks and VCs prefer projects with formal feasibility studies.</li>
+  </ul>
+
+  <div class="topic-h2">Types of Feasibility Study</div>
+  <table class="cmp-table">
+    <thead><tr><th>Type</th><th>Focus</th><th>Key Questions Answered</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Market Feasibility</strong></td><td>Demand, competition, target customers, pricing, market size.</td><td>Is there sufficient demand? Who are the customers? What price will they pay?</td></tr>
+      <tr><td><strong>Technical Feasibility</strong></td><td>Production processes, technology, raw materials, location, capacity.</td><td>Is the product/service technically producible? Do we have the technology and capacity?</td></tr>
+      <tr><td><strong>Financial Feasibility</strong></td><td>Cost estimation, funding, break-even analysis, profitability, ROI.</td><td>How much capital is needed? Can the project generate adequate returns?</td></tr>
+      <tr><td><strong>Organisational/Managerial Feasibility</strong></td><td>Management capability, human resources, structure.</td><td>Does the team have the skills and capacity to execute?</td></tr>
+      <tr><td><strong>Legal/Regulatory Feasibility</strong></td><td>Licences, permits, compliance, legal constraints.</td><td>Are there any legal or regulatory barriers? What approvals are required?</td></tr>
+      <tr><td><strong>Environmental/Social Feasibility</strong></td><td>Environmental impact, social acceptance, sustainability.</td><td>Does the project comply with environmental norms? Is it socially acceptable?</td></tr>
+    </tbody>
+  </table>
+
+  <!-- BUSINESS PLAN -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-4-2">
+    <div class="acc-hdr" onclick="toggleAcc('acc-4-2')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">4.2</span>
+        <span class="acc-title">Business Plan — Concept, Structure & Contents</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">A <strong>business plan</strong> is a comprehensive written document that describes a business's objectives, strategies, market position, financial projections, and action plan for achieving its goals. It is the central document used to communicate the business idea to investors, banks, partners, and internal stakeholders.</p>
+
+  <div class="topic-h2">Key Components of a Business Plan</div>
+  <div class="classif-grid">
+    <div class="classif-card" style="border-left:3px solid var(--purple)"><div class="classif-card-name purple">1. Executive Summary</div><div class="classif-card-body">A brief overview of the entire business plan — business idea, USP, market opportunity, financial highlights. Written last, placed first.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--purple)"><div class="classif-card-name purple">2. Company Description</div><div class="classif-card-body">Business name, legal structure, location, founding date, mission statement, vision, and core values.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--purple)"><div class="classif-card-name purple">3. Market Analysis</div><div class="classif-card-body">Target market size, customer segments, competitor analysis, market trends, and demand forecasting.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--purple)"><div class="classif-card-name purple">4. Product/Service Description</div><div class="classif-card-body">Features, benefits, USP, development stage, IP protection (patents, trademarks), and R&D plans.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--purple)"><div class="classif-card-name purple">5. Marketing & Sales Strategy</div><div class="classif-card-body">Pricing, promotion, distribution channels, customer acquisition strategy, and sales projections.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--purple)"><div class="classif-card-name purple">6. Operations Plan</div><div class="classif-card-body">Location, production process, supply chain, quality control, and operational infrastructure.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--purple)"><div class="classif-card-name purple">7. Management Team</div><div class="classif-card-body">Founders' background, key team members, advisors, and organisational structure.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--purple)"><div class="classif-card-name purple">8. Financial Plan</div><div class="classif-card-body">Startup costs, revenue projections, break-even analysis, cash flow statements, P&L, and funding requirements.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--purple)"><div class="classif-card-name purple">9. Funding Requirements</div><div class="classif-card-body">How much funding is needed, what it will be used for, and the proposed equity/debt structure.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--purple)"><div class="classif-card-name purple">10. Appendices</div><div class="classif-card-body">Supporting documents — market research data, product photos, legal documents, CVs, letters of intent.</div></div>
+  </div>
+
+  <!-- PITCH DECK -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-4-3">
+    <div class="acc-hdr" onclick="toggleAcc('acc-4-3')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">4.3</span>
+        <span class="acc-title">Pitch Deck for Investors — Role, Importance & Structure</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">A <strong>pitch deck</strong> is a concise, visual presentation (typically 10–20 slides) used by entrepreneurs to present their business idea, value proposition, market opportunity, and funding requirements to potential investors. It is a distilled version of the business plan, designed for a short investor meeting (typically 10–20 minutes).</p>
+
+  <div class="topic-h2">Role & Importance</div>
+  <ul class="blist">
+    <li>First impression tool — secures investor interest and opens the door to further discussions.</li>
+    <li>Communicates complex ideas quickly and visually in a time-constrained investor setting.</li>
+    <li>Provides a structured narrative: problem → solution → market → business model → team → ask.</li>
+    <li>Forces the entrepreneur to clearly articulate their value proposition and competitive advantage.</li>
+    <li>Used across seed, angel, and VC funding stages.</li>
+  </ul>
+
+  <div class="topic-h2">Standard Pitch Deck Structure</div>
+  <div class="stage-flow">
+    <div class="stage"><div class="stage-num">Slide 1</div><div class="stage-name">Cover / Title</div><div class="stage-desc">Company name, logo, tagline.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Slide 2</div><div class="stage-name">Problem</div><div class="stage-desc">The pain point being solved.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Slide 3</div><div class="stage-name">Solution</div><div class="stage-desc">How your product/service solves it.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Slide 4</div><div class="stage-name">Market Size</div><div class="stage-desc">TAM, SAM, SOM.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Slide 5</div><div class="stage-name">Business Model</div><div class="stage-desc">How you make money.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Slide 6–8</div><div class="stage-name">Traction / Team / Financials</div><div class="stage-desc">Progress, key people, projections.</div></div>
+    <div class="stage-arrow"></div>
+    <div class="stage"><div class="stage-num">Final</div><div class="stage-name">The Ask</div><div class="stage-desc">Funding required and use of funds.</div></div>
+  </div>
+
+  <!-- BUSINESS MODEL CANVAS -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-4-4">
+    <div class="acc-hdr" onclick="toggleAcc('acc-4-4')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">4.4</span>
+        <span class="acc-title">Business Model Canvas — Concept, Components & Drafting</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">The <strong>Business Model Canvas (BMC)</strong>, developed by Alexander Osterwalder, is a one-page strategic management template that provides a visual overview of a business model. It enables entrepreneurs to map out, design, and test business models quickly and holistically, covering 9 building blocks.</p>
+
+  <table class="cmp-table">
+    <thead><tr><th>Block</th><th>Question Answered</th><th>Example (Cloud Kitchen)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Customer Segments</strong></td><td>Who are we creating value for?</td><td>Urban working professionals aged 22–40, health-conscious consumers.</td></tr>
+      <tr><td><strong>Value Propositions</strong></td><td>What value do we deliver to the customer?</td><td>Healthy, affordable, home-cooked-style meals delivered in 30 minutes.</td></tr>
+      <tr><td><strong>Channels</strong></td><td>How do we reach our customers?</td><td>Swiggy, Zomato, our own app, WhatsApp ordering.</td></tr>
+      <tr><td><strong>Customer Relationships</strong></td><td>How do we acquire and retain customers?</td><td>Subscriptions, loyalty points, feedback-driven menu updates.</td></tr>
+      <tr><td><strong>Revenue Streams</strong></td><td>How do we generate revenue?</td><td>Per-order revenue, monthly subscription plans, catering orders.</td></tr>
+      <tr><td><strong>Key Resources</strong></td><td>What assets do we need?</td><td>Commercial kitchen, cooking staff, delivery partners, app.</td></tr>
+      <tr><td><strong>Key Activities</strong></td><td>What must we do to operate?</td><td>Food preparation, order management, delivery coordination, quality control.</td></tr>
+      <tr><td><strong>Key Partnerships</strong></td><td>Who are our key suppliers and partners?</td><td>Food aggregators (Swiggy/Zomato), raw material suppliers, packaging vendors.</td></tr>
+      <tr><td><strong>Cost Structure</strong></td><td>What are our most important costs?</td><td>Rent, staff salaries, raw materials, aggregator commissions, packaging.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ★ IMPORTANT QUESTIONS -->
+    </div>
+  </div>
+  <div class="pyq-section">
+    <div class="pyq-header">
+      <span class="pyq-star">★</span>
+      <div>
+        <div class="pyq-title">Important Questions — Unit 4</div>
+        <div class="pyq-subtitle">Past Year Questions · Frequency Rated</div>
+      </div>
+    </div>
+    <div class="pyq-note">This unit tests both conceptual understanding and drafting ability. Be ready to <strong>draw/describe the BMC</strong> and explain <strong>types of feasibility studies</strong> in detail.</div>
+    <ul class="pyq-list">
+      <li><span class="pyq-star-icon">★</span><span class="high-freq">Explain the concept and importance of a feasibility study. What are the different types of feasibility study?</span><span class="pyq-marks">3/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span class="high-freq">Explain the concept of a Business Model Canvas and discuss its 9 key components with examples.</span><span class="pyq-marks">3/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span>What are the essential components of a business plan? Explain the structure and contents of a comprehensive business plan.</span><span class="pyq-marks">2/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span>Discuss the role and importance of a pitch deck for investors. What should a standard pitch deck contain?</span><span class="pyq-marks">2/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>What is market feasibility? How does it differ from financial feasibility?</span><span class="pyq-marks">1/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>Distinguish between a business plan and a business model canvas.</span><span class="pyq-marks">1/4 yrs</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══ UNIT 5 VIEW ═══ -->
+<div class="view u5-page" id="view-u5">
+  <button class="back-btn" onclick="showView('home')">← Back to Overview</button>
+  <div class="section-header">
+    <div class="section-unit-tag rose">Unit 5 · 8 Lectures</div>
+    <div class="section-title">Start-ups & Intellectual Property</div>
+    <div class="section-desc">IP concept, patents, copyrights, trademarks, and geographical indications — protection of intangible assets for entrepreneurs.</div>
+  </div>
+
+  <!-- IP CONCEPT -->
+  <div class="acc-item" id="acc-5-1">
+    <div class="acc-hdr" onclick="toggleAcc('acc-5-1')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">5.1</span>
+        <span class="acc-title">Concept of Intellectual Property (IP) & IPRs</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose"><strong>Intellectual Property (IP)</strong> refers to the creations of the human mind that have value and can be legally recognized as property. These arise from intellectual effort, creativity, innovation, skill, and original thinking rather than physical labour alone. Examples: inventions, literary works, artistic creations, symbols, brand names, designs, formulas, software, trade secrets.</p>
+  <p class="prose"><strong>Intellectual Property Rights (IPRs)</strong> are the legal rights granted to creators, inventors, authors, or owners of intellectual property, enabling them to control the use, exploitation, reproduction, sale, or distribution of their creations.</p>
+
+  <div class="card rose-accent" style="margin:14px 0">
+    <div class="card-title">IP vs IPRs — Simple Distinction</div>
+    <div class="card-body">
+      <strong>Intellectual Property</strong> = the intangible creation itself (the invention, brand, design, work).<br>
+      <strong>IPRs</strong> = the legal protection and exclusive rights over that creation (the shield around it).<br><br>
+      IPRs transform creativity and innovation into <strong>legally enforceable economic assets</strong>.
+    </div>
+  </div>
+
+  <div class="topic-h2">What IPR Enables an Owner to Do</div>
+  <ul class="blist">
+    <li>Use the creation themselves.</li>
+    <li>Prevent others from using it without permission.</li>
+    <li>License it to others (earning royalties).</li>
+    <li>Assign or sell the rights.</li>
+    <li>Earn royalties or commercial returns from the creation.</li>
+  </ul>
+
+  <!-- PATENT -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-5-2">
+    <div class="acc-hdr" onclick="toggleAcc('acc-5-2')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">5.2</span>
+        <span class="acc-title">Patent</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">A <strong>patent</strong> is an <em>exclusive legal right granted to an inventor for a new invention</em>. The invention may relate to a product or process offering a new technical solution to a problem or a new and useful way of doing something. In return, the inventor publicly discloses the technical details through a patent application.</p>
+
+  <div class="topic-h2">Conditions for Patent Grant (3 Essential Criteria)</div>
+  <div class="classif-grid">
+    <div class="classif-card" style="border-left:3px solid var(--rose)"><div class="classif-card-name rose">Novelty</div><div class="classif-card-body">The invention must be new — not previously known or publicly disclosed anywhere in the world before the filing date.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--rose)"><div class="classif-card-name rose">Inventive Step (Non-Obviousness)</div><div class="classif-card-body">The invention must not be obvious to a skilled person in that technical field. There must be genuine inventive merit.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--rose)"><div class="classif-card-name rose">Industrial Applicability</div><div class="classif-card-body">The invention must be capable of practical use or industrial application — it cannot be a mere abstract idea.</div></div>
+  </div>
+
+  <div class="topic-h2">What Patent Protection Provides</div>
+  <p class="prose">Patent protection gives the owner the exclusive right to prevent others from commercially <strong>making, using, manufacturing, distributing, importing, or selling</strong> the patented invention without consent. This creates a <strong>temporary legal monopoly</strong> over commercial use of the invention.</p>
+
+  <div class="topic-h2">Key Facts about Patents</div>
+  <table class="cmp-table">
+    <thead><tr><th>Aspect</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td>Duration</td><td><strong>20 years</strong> from the filing date of the application (subject to conditions and fees).</td></tr>
+      <tr><td>Territorial</td><td>Patent is a <strong>territorial right</strong> — valid only in countries where it is applied for and granted. An Indian patent does not automatically protect in the USA or Europe.</td></tr>
+      <tr><td>After Expiry</td><td>After the 20-year term ends, the invention enters the <strong>public domain</strong> — freely usable by anyone.</td></tr>
+      <tr><td>Not Protected</td><td>Mathematical methods, mental acts, abstract ideas, scientific discoveries (as such), literary/artistic works, business methods (in most jurisdictions).</td></tr>
+    </tbody>
+  </table>
+
+  <div class="topic-h2">Importance of Patents for Start-ups</div>
+  <ul class="blist">
+    <li>Encourages R&D and rewards innovation.</li>
+    <li>Creates entry barriers for competitors.</li>
+    <li>Enables licensing and royalty income.</li>
+    <li>Increases firm valuation.</li>
+    <li>Strengthens technological competitiveness.</li>
+    <li>Attracts investors — a venture with patented technology appears more credible to angel investors and VCs.</li>
+  </ul>
+
+  <div class="example-box">Start-up with a portable solar-powered water purification device for rural households — if the filtration mechanism is genuinely new and non-obvious, they may obtain a patent. Once granted, no competitor can manufacture or sell the same invention without authorisation.</div>
+
+  <!-- COPYRIGHT -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-5-3">
+    <div class="acc-hdr" onclick="toggleAcc('acc-5-3')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">5.3</span>
+        <span class="acc-title">Copyright</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose"><strong>Copyright</strong> is a legal right that protects <em>original creative works of authorship</em>. It protects the expression of ideas, not the ideas themselves. Copyright arises automatically upon creation of the work — no formal registration is required for protection (though registration creates useful legal records).</p>
+
+  <table class="cmp-table">
+    <thead><tr><th>Aspect</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td>What it protects</td><td>Literary works (books, articles, code), artistic works (paintings, photographs), musical works (compositions, recordings), films, databases, computer software.</td></tr>
+      <tr><td>Does not protect</td><td>Ideas, concepts, facts, information, methods, systems, titles alone, slogans alone (these need trademark protection).</td></tr>
+      <tr><td>Duration (India)</td><td>Generally the author's lifetime + <strong>60 years</strong> after death. For films, photographs, government works: 60 years from publication.</td></tr>
+      <tr><td>Rights given</td><td>Right to reproduce, publish, adapt, translate, broadcast, perform, and make derivative works — exclusively.</td></tr>
+      <tr><td>Automatic or Registered?</td><td>Arises automatically. Registration with the Copyright Office provides stronger legal evidence but is not compulsory.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- TRADEMARK -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-5-4">
+    <div class="acc-hdr" onclick="toggleAcc('acc-5-4')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">5.4</span>
+        <span class="acc-title">Trademark</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">A <strong>trademark</strong> is a distinctive sign, symbol, logo, word, phrase, design, sound, or combination thereof that identifies and distinguishes the goods or services of one business from those of another. It protects <strong>brand identity</strong>.</p>
+
+  <table class="cmp-table">
+    <thead><tr><th>Aspect</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td>What it protects</td><td>Brand names, logos, slogans, distinctive packaging (trade dress), sounds, shapes associated with a product or service.</td></tr>
+      <tr><td>What it does not protect</td><td>Generic or descriptive terms (e.g., "sweet" for a candy store); functional aspects of a product.</td></tr>
+      <tr><td>Duration (India)</td><td>Registered for <strong>10 years</strong> from the date of filing, renewable indefinitely every 10 years as long as it remains in use.</td></tr>
+      <tr><td>Registration</td><td>Requires application to the Trademark Registry. Provides right to use ® symbol and legal protection against infringement.</td></tr>
+      <tr><td>™ vs ®</td><td><strong>™</strong> = Unregistered trademark (claim to mark, no formal protection). <strong>®</strong> = Registered trademark (full legal protection).</td></tr>
+      <tr><td>For Start-ups</td><td>Trademark protects brand identity, prevents copycats, builds customer trust, and creates commercial value in the brand itself.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="example-box">The brand name "Amul" and its distinctive girl logo are registered trademarks. No other company can use the Amul name or similar logo on dairy products without permission.</div>
+
+  <!-- GEOGRAPHICAL INDICATIONS -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-5-5">
+    <div class="acc-hdr" onclick="toggleAcc('acc-5-5')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">5.5</span>
+        <span class="acc-title">Geographical Indications (GI)</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <p class="prose">A <strong>Geographical Indication (GI)</strong> is a sign used on products that have a <em>specific geographical origin</em> and possess qualities, reputation, or characteristics essentially attributable to that place of origin. GI protection is particularly important for agricultural products, handicrafts, and traditional products tied to specific regions.</p>
+
+  <table class="cmp-table">
+    <thead><tr><th>Aspect</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td>What it protects</td><td>Products whose quality, reputation, or other characteristics are essentially linked to their geographical origin.</td></tr>
+      <tr><td>Who can use GI?</td><td>Only producers/artisans located in the designated geographical region and who comply with the product specifications.</td></tr>
+      <tr><td>Duration</td><td>Registered for <strong>10 years</strong>, renewable indefinitely.</td></tr>
+      <tr><td>Cannot be licensed or sold</td><td>Unlike other IP, a GI tag belongs to the community/producers of that region — it cannot be bought, sold, or transferred to someone outside that region.</td></tr>
+      <tr><td>Protection</td><td>Prevents use of the GI by parties outside the geographical area or parties that do not follow set quality standards.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="topic-h2">Famous Indian Examples of GI-Tagged Products</div>
+  <div class="classif-grid">
+    <div class="classif-card" style="border-left:3px solid var(--rose)"><div class="classif-card-name rose">Darjeeling Tea</div><div class="classif-card-body">First Indian product to receive a GI tag. Tea grown in the Darjeeling hills of West Bengal — distinctive flavour, aroma, and quality.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--rose)"><div class="classif-card-name rose">Basmati Rice</div><div class="classif-card-body">Long-grain aromatic rice grown in specific regions of northern India. GI protects its identity in international trade.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--rose)"><div class="classif-card-name rose">Kanchipuram Silk</div><div class="classif-card-body">Handloom silk sarees woven in Kanchipuram, Tamil Nadu — specific weaving technique and gold zari work.</div></div>
+    <div class="classif-card" style="border-left:3px solid var(--rose)"><div class="classif-card-name rose">Kolkata Rosogolla</div><div class="classif-card-body">Soft, spongy, white rosogolla originating from West Bengal — received GI tag in 2017 after a famous dispute with Odisha.</div></div>
+  </div>
+
+  <!-- COMPARATIVE TABLE -->
+    </div>
+  </div>
+  <div class="acc-item" id="acc-5-6">
+    <div class="acc-hdr" onclick="toggleAcc('acc-5-6')">
+      <div class="acc-hdr-left">
+        <span class="acc-num">5.6</span>
+        <span class="acc-title">Summary Comparison — IP Types</span>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </div>
+    <div class="acc-body">
+  <table class="cmp-table">
+    <thead><tr><th>Type</th><th>Protects</th><th>Duration</th><th>Territorial?</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Patent</strong></td><td>New inventions (products or processes)</td><td>20 years from filing</td><td>Yes — country-specific</td></tr>
+      <tr><td><strong>Copyright</strong></td><td>Original creative works (literary, artistic, musical, software)</td><td>Author's life + 60 years</td><td>Yes — but many international treaties (Berne Convention) give wide coverage</td></tr>
+      <tr><td><strong>Trademark</strong></td><td>Brand identity (names, logos, slogans, packaging)</td><td>10 years, renewable forever</td><td>Yes — country-specific registration</td></tr>
+      <tr><td><strong>Geographical Indication</strong></td><td>Products with specific geographical origin and associated qualities</td><td>10 years, renewable forever</td><td>Yes — but international treaties (TRIPS) provide protection</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ★ IMPORTANT QUESTIONS -->
+    </div>
+  </div>
+  <div class="pyq-section">
+    <div class="pyq-header">
+      <span class="pyq-star">★</span>
+      <div>
+        <div class="pyq-title">Important Questions — Unit 5</div>
+        <div class="pyq-subtitle">Past Year Questions · Frequency Rated</div>
+      </div>
+    </div>
+    <div class="pyq-note">Focus heavily on <strong>distinctions between IP types</strong> and the <strong>conditions and duration</strong> of each. GI-tagged Indian examples are frequently asked in short notes.</div>
+    <ul class="pyq-list">
+      <li><span class="pyq-star-icon">★</span><span class="high-freq">Explain the concept of Intellectual Property Rights (IPR). Why are IPRs important for start-ups and entrepreneurs?</span><span class="pyq-marks">3/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span class="high-freq">Explain the concept of a Patent. What are the conditions for grant of a patent? What rights does a patent provide to its owner?</span><span class="pyq-marks">3/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span>What is a Trademark? How does it differ from a Patent and Copyright? Explain with examples.</span><span class="pyq-marks">2/4 yrs</span></li>
+      <li><span class="pyq-star-icon">★</span><span>Explain Geographical Indications (GI) with reference to Indian examples. Why are GI tags important for regional and artisan producers?</span><span class="pyq-marks">2/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>What is Copyright? What kinds of works does it protect and what are its limitations?</span><span class="pyq-marks">1/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>Write short notes on: (a) Patent (b) Trademark (c) Geographical Indication.</span><span class="pyq-marks">1/4 yrs</span></li>
+      <li><span class="pyq-star-icon">☆</span><span>Prepare a comparative table distinguishing between Patent, Copyright, Trademark, and Geographical Indication.</span><span class="pyq-marks">1/4 yrs</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer-bar">
+  Entrepreneurship · S2BC230411T · St. Xavier's College (Autonomous), Kolkata · BCom 2026<br>
+  <span style="color:var(--text3);margin-top:4px;display:block">Notes compiled from course handouts · ★ Important questions from PYQ analysis · For academic use only</span>
+</div>
+
+</div><!-- end #content -->
+
+<script>
+
+function toggleAcc(id){
+  const item = document.getElementById(id);
+  if(!item) return;
+  item.classList.toggle('open');
+}
+
+function showView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  const el=document.getElementById('view-'+id);
+  if(el){el.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+  const btn=document.querySelector(`.nav-btn[onclick="showView('${id}')"]`);
+  if(btn) btn.classList.add('active');
+}
+</script>
+</body>
+</html>
